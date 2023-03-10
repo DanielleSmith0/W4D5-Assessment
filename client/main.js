@@ -1,5 +1,11 @@
-const complimentBtn = document.getElementById("complimentButton")
-const fortuneBtn = document.getElementById("fortuneButton")
+const complimentBtn = document.getElementById("complimentButton");
+const fortuneBtn = document.getElementById("fortuneButton");
+const goalForm = document.getElementById("goal-form");
+const putGoalInput = document.getElementById("put-goal");
+const putGoaltext = document.getElementById("put-goal-text");
+const putGoalBtn = document.getElementById("put-goal-btn");
+
+
 
 const getCompliment = () => {
     axios.get("http://localhost:4000/api/compliment/")
