@@ -1,0 +1,15 @@
+body {
+    background-color: rgb(243, 186, 204);
+}
+
+form > * {
+    display: block;
+}
+
+input, textarea {
+    margin-bottom: 10px;
+}
+
+h3 {
+    margin-top: 50px;
+}

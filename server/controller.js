@@ -1,3 +1,5 @@
+let database = [];
+
 module.exports = {
 
     getCompliment: (req, res) => {
@@ -15,6 +17,55 @@ module.exports = {
         let randomFortune = fortunes[randomIndex];
 
         res.status(200).send(randomFortune);
-    }
+    },
+    postGoal: (req, res) => {
+        database.push(req.body)
+        console.log(req.body)
+        res.status(200).send("Goal posted")
+    },
+    getGoals: (req, res) => {
+        res.status(200).send(database);
+    },
+    updateGoal: (req, res) => {
+        let goal = req.query.goal
 
+        let goalSteps = req.query.goalSteps
+
+        let index
+
+        for(let i = 0; i < database.length; i++) {
+            let currentInput = database[i].goal;
+            if (currentInput === goal){
+                index = i;
+            };
+
+        };
+        if(index === undefined) {
+            res.status(400).send('goal not found')
+        }else{
+            database[index].postGoalText = goalSteps
+            delete database.goalSteps;
+            res.status(200).send(database);
+        };
+    },
+    deleteGoal: (req, res) => {
+        let {goalName} = req.params;
+
+        let index
+
+        for(let i = 0; i < database.length; i++) {
+            let currentInput = database[i].goal;
+            if (currentInput === goalName){
+                index = i;
+            };
+
+        };
+
+        if(index === undefined) {
+            res.status(400).send('That is not a listed goal')
+        }else{
+            database.splice(index, 1)
+            res.status(200).send(database);
+        };    
+    }
 }
